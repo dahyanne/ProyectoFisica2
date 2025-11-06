@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribución de Energía en Colombia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #003366;
+            --secondary: #005c97;
+            --accent: #00a8e8;
+            --light: #f5f5f5;
+            --dark: #333;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Estilos del encabezado */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .energy-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .energy-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        
+        /* Estilos de navegación */
+        nav {
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            background-color: var(--secondary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: var(--accent);
+            transition: all 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 80%;
+            left: 10%;
+        }
+        
+        /* Estilos de secciones */
+        section {
+            background-color: white;
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 20px 0 10px;
+        }
+        
+        /* Estilos de perfil de integrantes */
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        
+        .team-member {
+            width: 250px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Estilos del estado del arte */
+        .content-text {
+            line-height: 1.5;
+            font-size: 12pt;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background-color: #e6f2ff;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .equation {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 15px 0;
+            border-left: 4px solid var(--secondary);
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .graphics-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 30px 0;
+            gap: 20px;
+        }
+        
+        .graphic-item {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .graphic-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .graphic-img:hover {
+            transform: scale(1.03);
+        }
+        
+        .graphic-caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+        
+        /* Proceso de distribución */
+        .process-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+            margin: 10px;
+            background: linear-gradient(to bottom, #f0f8ff, #e1f0fa);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .process-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .process-step h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Áreas de distribución */
+        .areas-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .area-card {
+            flex: 1;
+            min-width: 250px;
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .area-card h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .area-card h4 i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        /* Estilos del pie de página */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav a {
+                padding: 10px;
+            }
+            
+            .team-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .process-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="energy-animation" id="energyAnimation"></div>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                <h1>Distribución de Energía en Colombia</h1>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#integrantes">Integrantes</a></li>
+            <li><a href="#descripcion">Descripción</a></li>
+            <li><a href="#proceso">Proceso</a></li>
+            <li><a href="#areas">Áreas ADD</a></li>
+            <li><a href="#estado-arte">Estado del Arte</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="integrantes">
+            <h2>Perfil de las Integrantes</h2>
+            <div class="team-container">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Foto Camila Escobar" class="member-photo">
+                    <h3>Camila Escobar</h3>
+                    <p>Ingeniería Eléctrica</p>
+                    <div class="social-links">
+                        <i class="fab fa-linkedin"></i>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Foto Karoll López" class="member-photo">
+                    <h3>Karoll López</h3>
+                    <p>Ingeniería Electrónica</p>
+                    <div class="social-links">
+                        <i class="fab fa-linkedin"></i>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="descripcion">
+            <h2>Descripción del Proyecto</h2>
+            <div class="content-text">
+                <p>Este proyecto tiene como objetivo analizar el sistema de distribución de energía eléctrica en Colombia, identificando sus características principales, desafíos y oportunidades de mejora. Se examinarán los aspectos técnicos, regulatorios y socioeconómicos que influyen en la eficiencia y cobertura del servicio eléctrico en el país.</p>
+                
+                <h3>Temas particulares a tratar:</h3>
+                <ul>
+                    <li>Estructura del sistema de distribución eléctrica en Colombia</li>
+                    <li>Marco regulatorio y políticas energéticas</li>
+                    <li>Indicadores de calidad del servicio</li>
+                    <li>Pérdidas técnicas y no técnicas en la distribución</li>
+                    <li>Integración de energías renovables</li>
+                    <li>Cobertura y acceso a la energía en zonas rurales</li>
+                    <li>Impacto de las Áreas de Distribución (ADD) en las tarifas</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="proceso">
+            <h2>Proceso de Distribución de Energía</h2>
+            <div class="content-text">
+                <p>La distribución de energía eléctrica en Colombia se realiza en cuatro etapas principales: generación, transmisión, distribución y comercialización. Cada una de estas etapas cumple una función importante para llevar la energía hasta los hogares y empresas.</p>
+            </div>
+            
+            <div class="process-container">
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h4>Generación</h4>
+                    <p>La electricidad se produce en centrales hidroeléctricas, térmicas o de fuentes renovables como la eólica y la solar.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>Transmisión</h4>
+                    <p>La energía se transporta desde las centrales a través de líneas de alta tensión y subestaciones eléctricas.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h4>Distribución</h4>
+                    <p>En las subestaciones, se reduce la tensión para distribuirla a través de redes de baja tensión hasta los usuarios.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h4>Comercialización</h4>
+                    <p>Las distribuidoras suministran la electricidad a los consumidores finales y gestionan la facturación.</p>
+                </div>
+            </div>
+            
+            <div class="content-text">
+                <h3>Mercados de Comercialización</h3>
+                <p>En Colombia existen dos tipos de mercados para la comercialización de energía:</p>
+                
+                <div class="areas-container">
+                    <div class="area-card">
+                        <h4><i class="fas fa-balance-scale"></i> Mercado Regulado</h4>
+                        <p>Los usuarios que no cumplen los límites de demanda de energía se encuentran aquí, y las tarifas se publican mensualmente.</p>
+                    </div>
+                    
+                    <div class="area-card">
+                        <h4><i class="fas fa-chart-line"></i> Mercado No Regulado</h4>
+                        <p>Los usuarios que superan estos límites pueden celebrar contratos específicos con las comercializadoras, como el contrato Pague lo Demandado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="areas">
+            <h2>Áreas de Distribución (ADD)</h2>
+            <div class="content-text">
+                <p>Para establecer los cargos por el uso de los sistemas de transmisión regional y distribución local de energía eléctrica en el sistema interconectado nacional, el Decreto 388 de 2007 del Ministerio de Minas y Energía entregó las directrices para la creación de las Áreas de Distribución, conocidas como ADD.</p>
+                
+                <h3>¿Qué son las Áreas de Distribución (ADD)?</h3>
+                <p>De acuerdo con el artículo 1° del Decreto 388, un Área de Distribución (ADD) está conformada por uno o más operadores de red con cercanía geográfica, que prestan el servicio de energía tanto en zonas urbanas como rurales.</p>
+                
+                <p>Estas ADD incluyen todo el conjunto de redes que permiten la distribución local de la electricidad, con un cargo unificado y un subsidio cruzado entre los operadores de red.</p>
+                
+                <h3>¿Cómo están conformadas las ADD?</h3>
+                <p>El esquema de Áreas de Distribución de energía en Colombia está organizado en cuatro zonas:</p>
+                
+                <div class="areas-container">
+                    <div class="area-card">
+                        <h4><i class="fas fa-sun"></i> ADD Oriente</h4>
+                        <p>Incluye a Enel Colombia, Enelar, EBSA, Electrohuila y Celsia Tolima.</p>
+                    </div>
+                    
+                    <div class="area-card">
+                        <h4><i class="fas fa-mountain"></i> ADD Occidente</h4>
+                        <p>Zona occidental del país con sus respectivos operadores.</p>
+                    </div>
+                    
+                    <div class="area-card">
+                        <h4><i class="fas fa-map-marked-alt"></i> ADD Centro</h4>
+                        <p>Zona central del país con sus respectivos operadores.</p>
+                    </div>
+                    
+                    <div class="area-card">
+                        <h4><i class="fas fa-tree"></i> ADD Sur</h4>
+                        <p>Zona sur del país con sus respectivos operadores.</p>
+                    </div>
+                </div>
+                
+                <h3>Implicaciones para los usuarios</h3>
+                <p>La inclusión del mercado de Tolima, que antes no hacía parte de ninguna ADD, ha significado un aumento en los costos de prestación del servicio para los clientes del mercado atendido por Enel Colombia en Bogotá y Cundinamarca y, en general, para todos los usuarios pertenecientes a la ADD Oriente.</p>
+                
+                <p>Este valor se está reflejando como un incremento de la tarifa de energía, específicamente generado por el aumento de uno de sus componentes, el de distribución (D).</p>
+            </div>
+        </section>
+        
+        <section id="estado-arte">
+            <h2>Estado del Arte</h2>
+            <div class="content-text">
+                <h3>Introducción al Sistema de Distribución Eléctrica</h3>
+                <p>El sistema de distribución de energía eléctrica en Colombia está compuesto por redes que transportan la energía desde las subestaciones de transmisión hasta los usuarios finales. Este sistema opera principalmente en <span class="highlight">media tensión (MT)</span> y <span class="highlight">baja tensión (BT)</span>, con niveles de voltaje que varían según la normativa técnica colombiana.</p>
+                
+                <p>En el contexto de electricidad y magnetismo, la distribución eléctrica implica conceptos fundamentales como <span class="highlight">corriente eléctrica</span>, <span class="highlight">voltaje</span>, <span class="highlight">resistencia</span> y <span class="highlight">potencia</span>. La corriente eléctrica (I) se define como el flujo de carga por unidad de tiempo:</p>
+                
+                <div class="equation">I = dQ/dt</div>
+                
+                <p>Donde I es la corriente en amperios (A) y Q es la carga en culombios (C). En los sistemas de distribución, el <span class="highlight">voltaje (V)</span> se mantiene constante para garantizar un suministro estable a los usuarios, mientras que la corriente varía según la demanda.</p>
+                
+                <div class="graphics-container">
+                    <div class="graphic-item">
+                        <img src="https://via.placeholder.com/400x250" alt="Esquema de distribución eléctrica" class="graphic-img">
+                        <p class="graphic-caption">Figura 1: Esquema simplificado del sistema de distribución eléctrica</p>
+                    </div>
+                </div>
+                
+                <h3>Parámetros Eléctricos en Sistemas de Distribución</h3>
+                <p>En los sistemas de distribución, es fundamental medir y controlar diversos parámetros eléctricos para garantizar la calidad del servicio. La <span class="highlight">potencia activa (P)</span> se calcula como:</p>
+                
+                <div class="equation">P = V × I × cos(φ)</div>
+                
+                <p>Donde V es el voltaje, I es la corriente y cos(φ) es el factor de potencia. La <span class="highlight">potencia reactiva (Q)</span>, relacionada con los campos electromagnéticos en los equipos inductivos, se calcula como:</p>
+                
+                <div class="equation">Q = V × I × sin(φ)</div>
+                
+                <p>La <span class="highlight">potencia aparente (S)</span>, que representa la capacidad total del sistema, se obtiene mediante:</p>
+                
+                <div class="equation">S = V × I = √(P² + Q²)</div>
+                
+                <p>En Colombia, el factor de potencia en los sistemas de distribución debe mantenerse por encima de 0.9 según la regulación establecida por la Comisión de Regulación de Energía y Gas (CREG).</p>
+                
+                <div class="graphics-container">
+                    <div class="graphic-item">
+                        <img src="https://via.placeholder.com/400x250" alt="Triángulo de potencias" class="graphic-img">
+                        <p class="graphic-caption">Figura 2: Triángulo de potencias que muestra la relación entre P, Q y S</p>
+                    </div>
+                </div>
+                
+                <h3>Pérdidas en Sistemas de Distribución</h3>
+                <p>Las pérdidas en los sistemas de distribución representan un desafío significativo para la eficiencia energética. Estas pérdidas pueden ser técnicas, relacionadas con la <span class="highlight">resistencia (R)</span> de los conductores, o no técnicas, asociadas con medición inadecuada o conexiones ilegales.</p>
+                
+                <p>Las pérdidas por efecto Joule en los conductores se calculan mediante la ley de Joule:</p>
+                
+                <div class="equation">P<sub>pérdida</sub> = I² × R</div>
+                
+                <p>Donde I es la corriente que circula por el conductor y R es la resistencia del mismo. La resistencia de un conductor depende de su material, longitud y área transversal según la fórmula:</p>
+                
+                <div class="equation">R = ρ × (L/A)</div>
+                
+                <p>Donde ρ es la resistividad del material, L es la longitud del conductor y A es su área transversal.</p>
+                
+                <div class="graphics-container">
+                    <div class="graphic-item">
+                        <img src="https://via.placeholder.com/400x250" alt="Gráfico de pérdidas en distribución" class="graphic-img">
+                        <p class="graphic-caption">Figura 3: Distribución típica de pérdidas en sistemas de distribución</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Proyecto de Investigación: Distribución de la Energía en Colombia</p>
+            <p>Universidad Nacional de Colombia - 2023</p>
+            <p>Integrantes: Camila Escobar y Karoll López</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animación de partículas de energía
+        function createEnergyParticles() {
+            const animationContainer = document.getElementById('energyAnimation');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('energy-particle');
+                
+                // Posición aleatoria
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                // Tamaño aleatorio
+                const size = Math.random() * 3 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Animación
+                const duration = Math.random() * 5 + 3;
+                particle.style.animation = `pulse ${duration}s infinite`;
+                
+                animationContainer.appendChild(particle);
+            }
+        }
+        
+        // Efecto de aparición al hacer scroll
+        function checkVisibility() {
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.85) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+        
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            createEnergyParticles();
+            checkVisibility();
+            
+            window.addEventListener('scroll', checkVisibility);
+        });
+    </script>
+</body>
+</html>
