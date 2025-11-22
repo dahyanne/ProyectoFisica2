@@ -406,7 +406,7 @@
                 <div class="team-member">
                     <img src="https://via.placeholder.com/150" alt="Foto Camila Escobar" class="member-photo">
                     <h3>Camila Escobar</h3>
-                    <p>Ingeniería Eléctrica</p>
+                    <p>Ingeniería Indsutrial</p>
                     <div class="social-links">
                         <i class="fab fa-linkedin"></i>
                         <i class="fas fa-envelope"></i>
@@ -415,7 +415,7 @@
                 <div class="team-member">
                     <img src="https://via.placeholder.com/150" alt="Foto Karoll López" class="member-photo">
                     <h3>Karoll López</h3>
-                    <p>Ingeniería Electrónica</p>
+                    <p>Ingeniería en Sistemas y Computación</p>
                     <div class="social-links">
                         <i class="fab fa-linkedin"></i>
                         <i class="fas fa-envelope"></i>
@@ -442,174 +442,275 @@
             </div>
         </section>
         
-        <section id="proceso">
-            <h2>Proceso de Distribución de Energía</h2>
-            <div class="content-text">
-                <p>La distribución de energía eléctrica en Colombia se realiza en cuatro etapas principales: generación, transmisión, distribución y comercialización. Cada una de estas etapas cumple una función importante para llevar la energía hasta los hogares y empresas.</p>
+       <section id="proceso">
+    <h2>Proceso de Distribución de Energía en Colombia</h2>
+    <div class="content-text">
+        <p>El Sistema Interconectado Nacional (SIN) de Colombia asegura el flujo continuo de energía desde las plantas generadoras hasta los hogares, industrias y comercios. Este proceso se desarrolla en seis etapas principales: <strong>Generación</strong>, <strong>Transmisión</strong>, <strong>Subtransmisión</strong>, <strong>Distribución Primaria</strong>, <strong>Distribución Secundaria</strong> y <strong>Comercialización</strong>. Cada fase se apoya en principios físicos que garantizan la eficiencia y la estabilidad del sistema eléctrico nacional.</p>
+    </div>
+    
+    <div class="process-container">
+
+        <!-- Generación -->
+        <div class="process-step">
+            <div class="process-icon">
+                <i class="fas fa-water"></i>
+            </div>
+            <h4>Generación</h4>
+            <p>La energía eléctrica se produce transformando energía mecánica, térmica o solar en electricidad. En Colombia, las fuentes incluyen <strong>hidroeléctricas</strong>, <strong>térmicas</strong>, <strong>solares</strong>, <strong>eólicas</strong>, <strong>de biomasa</strong> y <strong>geotérmicas</strong>.</p>
+            <p><strong>Principio físico:</strong> Inducción electromagnética (<em>Ley de Faraday</em>)</p>
+            <div class="equation">ℰ = − N · (dΦ/dt)</div>
+            <p class="explanation">ℰ: fuerza electromotriz inducida, N: número de espiras, Φ: flujo magnético variable en el tiempo.</p>
+
+            <p><strong>Potencia generada:</strong></p>
+            <div class="equation">P = V · I · cos(φ)</div>
+            <p class="explanation">P: potencia activa, V: voltaje, I: corriente, φ: desfase entre tensión y corriente.</p>
+        </div>
+
+        <!-- Transmisión -->
+        <div class="process-step">
+            <div class="process-icon">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <h4>Transmisión</h4>
+            <p>La energía viaja desde las centrales hasta las subestaciones regionales por líneas de <strong>alta tensión</strong> (220–500 kV), reduciendo pérdidas en largas distancias.</p>
+            <p><strong>Principio físico:</strong> Efecto Joule</p>
+            <div class="equation">P<sub>pérdida</sub> = I² · R</div>
+            <p class="explanation">La pérdida de potencia depende de la corriente (I) y la resistencia del conductor (R).</p>
+
+            <div class="equation">I = P / V</div>
+            <p class="explanation">A mayor voltaje (V), menor corriente (I), reduciendo pérdidas térmicas.</p>
+        </div>
+
+        <!-- Subtransmisión -->
+        <div class="process-step">
+            <div class="process-icon">
+                <i class="fas fa-network-wired"></i>
+            </div>
+            <h4>Subtransmisión</h4>
+            <p>Conduce la energía desde las líneas de transmisión hasta subestaciones locales. Opera entre <strong>33 kV y 115 kV</strong>.</p>
+            <div class="equation">V₁ / V₂ = N₁ / N₂</div>
+            <p class="explanation">El voltaje varía proporcionalmente al número de espiras (N) de los bobinados del transformador.</p>
+        </div>
+
+        <!-- Distribución Primaria -->
+        <div class="process-step">
+            <div class="process-icon">
+                <i class="fas fa-charging-station"></i>
+            </div>
+            <h4>Distribución Primaria</h4>
+            <p>Transporta energía desde las subestaciones a transformadores urbanos o industriales (11 a 33 kV).</p>
+            <div class="equation">ΔV = I · R</div>
+            <p class="explanation">La caída de voltaje depende de la corriente y resistencia del conductor.</p>
+        </div>
+
+        <!-- Distribución Secundaria -->
+        <div class="process-step">
+            <div class="process-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <h4>Distribución Secundaria</h4>
+            <p>Entrega energía a los usuarios finales, reduciendo la tensión a <strong>110 V o 220 V</strong>.</p>
+            <div class="equation">V₂ = V₁ · (N₂ / N₁)</div>
+            <p class="explanation">Transformador reductor: disminuye la tensión para uso doméstico y comercial.</p>
+        </div>
+
+        <!-- Comercialización -->
+        <div class="process-step">
+            <div class="process-icon">
+                <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <h4>Comercialización</h4>
+            <p>Incluye medición, facturación y suministro al consumidor final. Empresas como <strong>Enel, EPM, CENS</strong> o <strong>Afinia</strong> gestionan esta etapa.</p>
+            <div class="equation">E = P · t</div>
+            <p class="explanation">E: energía consumida (kWh), P: potencia (kW), t: tiempo (h). Es la base para calcular la factura eléctrica.</p>
+        </div>
+    </div>
+
+    <div class="content-text">
+        <h3>Mercados de Comercialización</h3>
+        <p>En Colombia existen dos mercados principales regulados por la <strong>CREG</strong> (Comisión de Regulación de Energía y Gas):</p>
+        
+        <div class="areas-container">
+            <div class="area-card">
+                <h4><i class="fas fa-balance-scale"></i> Mercado Regulado</h4>
+                <p>Para usuarios residenciales y pequeños comercios. La CREG fija tarifas mensuales estándar.</p>
             </div>
             
-            <div class="process-container">
-                <div class="process-step">
-                    <div class="process-icon">
-                        <i class="fas fa-water"></i>
-                    </div>
-                    <h4>Generación</h4>
-                    <p>La electricidad se produce en centrales hidroeléctricas, térmicas o de fuentes renovables como la eólica y la solar.</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="process-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h4>Transmisión</h4>
-                    <p>La energía se transporta desde las centrales a través de líneas de alta tensión y subestaciones eléctricas.</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="process-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h4>Distribución</h4>
-                    <p>En las subestaciones, se reduce la tensión para distribuirla a través de redes de baja tensión hasta los usuarios.</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="process-icon">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                    </div>
-                    <h4>Comercialización</h4>
-                    <p>Las distribuidoras suministran la electricidad a los consumidores finales y gestionan la facturación.</p>
-                </div>
+            <div class="area-card">
+                <h4><i class="fas fa-chart-line"></i> Mercado No Regulado</h4>
+                <p>Para grandes consumidores que negocian contratos directos (por ejemplo, <em>“Pague lo Demandado”</em>).</p>
             </div>
-            
-            <div class="content-text">
-                <h3>Mercados de Comercialización</h3>
-                <p>En Colombia existen dos tipos de mercados para la comercialización de energía:</p>
-                
-                <div class="areas-container">
-                    <div class="area-card">
-                        <h4><i class="fas fa-balance-scale"></i> Mercado Regulado</h4>
-                        <p>Los usuarios que no cumplen los límites de demanda de energía se encuentran aquí, y las tarifas se publican mensualmente.</p>
-                    </div>
-                    
-                    <div class="area-card">
-                        <h4><i class="fas fa-chart-line"></i> Mercado No Regulado</h4>
-                        <p>Los usuarios que superan estos límites pueden celebrar contratos específicos con las comercializadoras, como el contrato Pague lo Demandado.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
+    </div>
+</section>
+
+
         
         <section id="areas">
-            <h2>Áreas de Distribución (ADD)</h2>
-            <div class="content-text">
-                <p>Para establecer los cargos por el uso de los sistemas de transmisión regional y distribución local de energía eléctrica en el sistema interconectado nacional, el Decreto 388 de 2007 del Ministerio de Minas y Energía entregó las directrices para la creación de las Áreas de Distribución, conocidas como ADD.</p>
-                
-                <h3>¿Qué son las Áreas de Distribución (ADD)?</h3>
-                <p>De acuerdo con el artículo 1° del Decreto 388, un Área de Distribución (ADD) está conformada por uno o más operadores de red con cercanía geográfica, que prestan el servicio de energía tanto en zonas urbanas como rurales.</p>
-                
-                <p>Estas ADD incluyen todo el conjunto de redes que permiten la distribución local de la electricidad, con un cargo unificado y un subsidio cruzado entre los operadores de red.</p>
-                
-                <h3>¿Cómo están conformadas las ADD?</h3>
-                <p>El esquema de Áreas de Distribución de energía en Colombia está organizado en cuatro zonas:</p>
-                
-                <div class="areas-container">
-                    <div class="area-card">
-                        <h4><i class="fas fa-sun"></i> ADD Oriente</h4>
-                        <p>Incluye a Enel Colombia, Enelar, EBSA, Electrohuila y Celsia Tolima.</p>
-                    </div>
-                    
-                    <div class="area-card">
-                        <h4><i class="fas fa-mountain"></i> ADD Occidente</h4>
-                        <p>Zona occidental del país con sus respectivos operadores.</p>
-                    </div>
-                    
-                    <div class="area-card">
-                        <h4><i class="fas fa-map-marked-alt"></i> ADD Centro</h4>
-                        <p>Zona central del país con sus respectivos operadores.</p>
-                    </div>
-                    
-                    <div class="area-card">
-                        <h4><i class="fas fa-tree"></i> ADD Sur</h4>
-                        <p>Zona sur del país con sus respectivos operadores.</p>
-                    </div>
-                </div>
-                
-                <h3>Implicaciones para los usuarios</h3>
-                <p>La inclusión del mercado de Tolima, que antes no hacía parte de ninguna ADD, ha significado un aumento en los costos de prestación del servicio para los clientes del mercado atendido por Enel Colombia en Bogotá y Cundinamarca y, en general, para todos los usuarios pertenecientes a la ADD Oriente.</p>
-                
-                <p>Este valor se está reflejando como un incremento de la tarifa de energía, específicamente generado por el aumento de uno de sus componentes, el de distribución (D).</p>
+    <h2>Áreas de Distribución (ADD)</h2>
+    <div class="content-text">
+        <p>Las <strong>Áreas de Distribución (ADD)</strong> agrupan redes y operadores eléctricos cercanos geográficamente para garantizar una distribución eficiente, segura y con tarifas reguladas. Estas áreas fueron creadas por el <strong>Decreto 388 de 2007</strong> del Ministerio de Minas y Energía.</p>
+
+        <h3>¿Qué son las Áreas de Distribución?</h3>
+        <p>Una ADD está conformada por uno o más <strong>operadores de red</strong> que prestan el servicio de energía en zonas urbanas y rurales. Estas áreas comparten infraestructura, costos y subsidios cruzados para equilibrar precios entre regiones.</p>
+
+        <div class="equation">Tarifa = G + T + D + C + P</div>
+        <p class="explanation">G: Generación, T: Transmisión, D: Distribución, C: Comercialización y P: Pérdidas del sistema.<br>El componente <strong>D</strong> depende directamente del área de distribución del usuario.</p>
+
+        <h3>Clasificación de las ADD en Colombia</h3>
+        <p>El país se divide en cuatro grandes Áreas de Distribución de Energía:</p>
+
+        <div class="areas-container">
+            <div class="area-card">
+                <h4><i class="fas fa-sun"></i> ADD Oriente</h4>
+                <p><strong>Operadores:</strong> Enel Colombia, Enelar, EBSA, Electrohuila, Celsia Tolima.<br>
+                <strong>Energía predominante:</strong> Hidroeléctrica y térmica.<br>
+                <div class="equation">E = P · t</div>
+                <p class="explanation">Energía entregada al usuario final.</p>
             </div>
-        </section>
+
+            <div class="area-card">
+                <h4><i class="fas fa-mountain"></i> ADD Occidente</h4>
+                <p><strong>Operadores:</strong> EPM, CHEC, Celsia, EMCALI, Cedenar.<br>
+                <strong>Energía predominante:</strong> Hidroeléctrica y solar.<br>
+                <div class="equation">ΔV = I · R</div>
+                <p class="explanation">Caída de tensión en líneas de distribución.</p>
+            </div>
+
+            <div class="area-card">
+                <h4><i class="fas fa-map-marked-alt"></i> ADD Centro</h4>
+                <p><strong>Operadores:</strong> Enel Codensa, ESSA, CENS, Enertolima.<br>
+                <strong>Energía predominante:</strong> Hidroeléctrica.<br>
+                <div class="equation">P = V · I · cos(φ)</div>
+                <p class="explanation">Potencia activa entregada en redes locales.</p>
+            </div>
+
+            <div class="area-card">
+                <h4><i class="fas fa-tree"></i> ADD Sur</h4>
+                <p><strong>Operadores:</strong> Electrocaquetá, EPSA, Dispac y otros regionales.<br>
+                <strong>Energía predominante:</strong> Híbrida (hidro, solar y diésel).<br>
+                <div class="equation">V₂ = V₁ · (N₂ / N₁)</div>
+                <p class="explanation">Transformación de voltaje para consumo seguro.</p>
+            </div>
+        </div>
+
+        <h3>Implicaciones para los Usuarios</h3>
+        <p>El valor del componente <strong>D</strong> varía según el área. Por ejemplo, la integración de Tolima en la ADD Oriente aumentó el costo de distribución y, por ende, la tarifa final.</p>
+
+        <div class="equation">Costo total = E × (G + T + D + C + P)</div>
+        <p class="explanation">Un aumento en <strong>D</strong> incrementa directamente el costo total de energía consumida.</p>
+
+        <h3>Rol de la CREG</h3>
+        <p>La <strong>Comisión de Regulación de Energía y Gas (CREG)</strong> establece los límites geográficos, estándares de calidad, tarifas y condiciones de equilibrio entre operadores dentro de cada ADD, garantizando un servicio <strong>equitativo, continuo y transparente</strong> en todo el país.</p>
+    </div>
+</section>
+
         
         <section id="estado-arte">
-            <h2>Estado del Arte</h2>
-            <div class="content-text">
-                <h3>Introducción al Sistema de Distribución Eléctrica</h3>
-                <p>El sistema de distribución de energía eléctrica en Colombia está compuesto por redes que transportan la energía desde las subestaciones de transmisión hasta los usuarios finales. Este sistema opera principalmente en <span class="highlight">media tensión (MT)</span> y <span class="highlight">baja tensión (BT)</span>, con niveles de voltaje que varían según la normativa técnica colombiana.</p>
-                
-                <p>En el contexto de electricidad y magnetismo, la distribución eléctrica implica conceptos fundamentales como <span class="highlight">corriente eléctrica</span>, <span class="highlight">voltaje</span>, <span class="highlight">resistencia</span> y <span class="highlight">potencia</span>. La corriente eléctrica (I) se define como el flujo de carga por unidad de tiempo:</p>
-                
-                <div class="equation">I = dQ/dt</div>
-                
-                <p>Donde I es la corriente en amperios (A) y Q es la carga en culombios (C). En los sistemas de distribución, el <span class="highlight">voltaje (V)</span> se mantiene constante para garantizar un suministro estable a los usuarios, mientras que la corriente varía según la demanda.</p>
-                
-                <div class="graphics-container">
-                    <div class="graphic-item">
-                        <img src="https://via.placeholder.com/400x250" alt="Esquema de distribución eléctrica" class="graphic-img">
-                        <p class="graphic-caption">Figura 1: Esquema simplificado del sistema de distribución eléctrica</p>
-                    </div>
-                </div>
-                
-                <h3>Parámetros Eléctricos en Sistemas de Distribución</h3>
-                <p>En los sistemas de distribución, es fundamental medir y controlar diversos parámetros eléctricos para garantizar la calidad del servicio. La <span class="highlight">potencia activa (P)</span> se calcula como:</p>
-                
-                <div class="equation">P = V × I × cos(φ)</div>
-                
-                <p>Donde V es el voltaje, I es la corriente y cos(φ) es el factor de potencia. La <span class="highlight">potencia reactiva (Q)</span>, relacionada con los campos electromagnéticos en los equipos inductivos, se calcula como:</p>
-                
-                <div class="equation">Q = V × I × sin(φ)</div>
-                
-                <p>La <span class="highlight">potencia aparente (S)</span>, que representa la capacidad total del sistema, se obtiene mediante:</p>
-                
-                <div class="equation">S = V × I = √(P² + Q²)</div>
-                
-                <p>En Colombia, el factor de potencia en los sistemas de distribución debe mantenerse por encima de 0.9 según la regulación establecida por la Comisión de Regulación de Energía y Gas (CREG).</p>
-                
-                <div class="graphics-container">
-                    <div class="graphic-item">
-                        <img src="https://via.placeholder.com/400x250" alt="Triángulo de potencias" class="graphic-img">
-                        <p class="graphic-caption">Figura 2: Triángulo de potencias que muestra la relación entre P, Q y S</p>
-                    </div>
-                </div>
-                
-                <h3>Pérdidas en Sistemas de Distribución</h3>
-                <p>Las pérdidas en los sistemas de distribución representan un desafío significativo para la eficiencia energética. Estas pérdidas pueden ser técnicas, relacionadas con la <span class="highlight">resistencia (R)</span> de los conductores, o no técnicas, asociadas con medición inadecuada o conexiones ilegales.</p>
-                
-                <p>Las pérdidas por efecto Joule en los conductores se calculan mediante la ley de Joule:</p>
-                
-                <div class="equation">P<sub>pérdida</sub> = I² × R</div>
-                
-                <p>Donde I es la corriente que circula por el conductor y R es la resistencia del mismo. La resistencia de un conductor depende de su material, longitud y área transversal según la fórmula:</p>
-                
-                <div class="equation">R = ρ × (L/A)</div>
-                
-                <p>Donde ρ es la resistividad del material, L es la longitud del conductor y A es su área transversal.</p>
-                
-                <div class="graphics-container">
-                    <div class="graphic-item">
-                        <img src="https://via.placeholder.com/400x250" alt="Gráfico de pérdidas en distribución" class="graphic-img">
-                        <p class="graphic-caption">Figura 3: Distribución típica de pérdidas en sistemas de distribución</p>
-                    </div>
-                </div>
+    <h2>Estado del Arte</h2>
+    <div class="content-text">
+        
+        <h3>Introducción al Sistema Eléctrico Colombiano</h3>
+        <p>El sistema eléctrico colombiano forma parte del <strong>Sistema Interconectado Nacional (SIN)</strong>, que garantiza el suministro continuo de energía desde las plantas generadoras hasta los usuarios finales. Este sistema está estructurado en cinco etapas principales: <strong>Generación, Transmisión, Subtransmisión, Distribución</strong> (primaria y secundaria) y <strong>Comercialización</strong>.</p>
+        
+        <p>Desde el punto de vista físico, cada etapa involucra principios de <strong>electricidad y magnetismo</strong> como la <em>Ley de Faraday</em>, la <em>Ley de Joule</em>, y los conceptos de <strong>potencia, corriente, voltaje y pérdidas resistivas</strong>.</p>
+
+        <div class="graphics-container">
+            <div class="graphic-item">
+                <img src="https://via.placeholder.com/400x250" alt="Diagrama del sistema eléctrico colombiano" class="graphic-img">
+                <p class="graphic-caption">Figura 1: Etapas principales del Sistema Interconectado Nacional (SIN)</p>
             </div>
-        </section>
+        </div>
+
+        <!-- Generación -->
+        <h3>Generación de Energía en Colombia</h3>
+        <p>La energía eléctrica se genera a partir de distintas fuentes que transforman energía mecánica, térmica o solar en electricidad mediante el principio de <strong>inducción electromagnética</strong>. En Colombia existen seis principales formas de generación:</p>
+        <ul>
+            <li><strong>Hidroeléctrica:</strong> Aprovecha el movimiento del agua en represas (≈ 65% del total nacional).</li>
+            <li><strong>Térmica:</strong> Combustión de gas natural, carbón o combustibles líquidos.</li>
+            <li><strong>Solar:</strong> Conversión directa de radiación solar en electricidad mediante paneles fotovoltaicos.</li>
+            <li><strong>Eólica:</strong> Conversión de la energía cinética del viento.</li>
+            <li><strong>Biomasa:</strong> Uso de residuos agrícolas y orgánicos.</li>
+            <li><strong>Geotérmica:</strong> Calor del subsuelo aprovechado para generar vapor y mover turbinas.</li>
+        </ul>
+
+        <p><strong>Principio físico — Ley de Faraday:</strong></p>
+        <div class="equation">ℰ = − N · (dΦ/dt)</div>
+        <p class="explanation">ℰ: fuerza electromotriz inducida, N: número de espiras, Φ: flujo magnético variable en el tiempo.</p>
+
+        <p><strong>Potencia generada:</strong></p>
+        <div class="equation">P = V · I · cos(φ)</div>
+        <p class="explanation">P: potencia activa, V: voltaje, I: corriente, φ: desfase entre tensión y corriente.</p>
+
+        <!-- Transmisión -->
+        <h3>Transmisión y Subtransmisión</h3>
+        <p>Una vez generada, la energía se transporta por líneas de <strong>alta tensión</strong> (220–500 kV) para reducir pérdidas eléctricas. Posteriormente, la <strong>subtransmisión</strong> la lleva a subestaciones regionales, donde el voltaje se reduce entre 33 y 115 kV para su distribución.</p>
+
+        <p><strong>Pérdidas por efecto Joule:</strong></p>
+        <div class="equation">P<sub>pérdida</sub> = I² · R</div>
+        <p class="explanation">A mayor corriente (I), mayores pérdidas térmicas. Por eso se eleva el voltaje (V) para disminuir I.</p>
+
+        <p><strong>Transformación de voltaje (Ley de los Transformadores):</strong></p>
+        <div class="equation">V₁ / V₂ = N₁ / N₂</div>
+        <p class="explanation">El voltaje cambia proporcionalmente al número de espiras del transformador, permitiendo elevar o reducir tensión según la etapa del proceso.</p>
+
+        <!-- Distribución -->
+        <h3>Distribución Primaria y Secundaria</h3>
+        <p>La <strong>distribución primaria</strong> opera entre 11 y 33 kV, llevando la energía a los transformadores urbanos o rurales. La <strong>distribución secundaria</strong> entrega la energía a los usuarios finales en niveles de <strong>110 o 220 V</strong>.</p>
+
+        <p><strong>Caída de tensión en las líneas:</strong></p>
+        <div class="equation">ΔV = I · R</div>
+        <p class="explanation">La caída de voltaje depende directamente de la corriente y la resistencia del conductor.</p>
+
+        <p><strong>Resistencia de los conductores:</strong></p>
+        <div class="equation">R = ρ · (L / A)</div>
+        <p class="explanation">ρ: resistividad del material, L: longitud del conductor, A: área de su sección transversal.</p>
+
+        <div class="graphics-container">
+            <div class="graphic-item">
+                <img src="https://via.placeholder.com/400x250" alt="Esquema de distribución primaria y secundaria" class="graphic-img">
+                <p class="graphic-caption">Figura 2: Red de distribución primaria (media tensión) y secundaria (baja tensión)</p>
+            </div>
+        </div>
+
+        <!-- Comercialización -->
+        <h3>Comercialización y Regulación</h3>
+        <p>La energía llega al consumidor a través del proceso de <strong>comercialización</strong>, que incluye la medición, facturación y gestión del suministro. Las empresas comercializadoras (como Enel, EPM, CENS, Afinia) participan en dos tipos de mercado: <strong>regulado</strong> y <strong>no regulado</strong>.</p>
+
+        <div class="equation">E = P · t</div>
+        <p class="explanation">E: energía consumida (kWh), P: potencia (kW), t: tiempo (h). Es la base del cálculo de facturación eléctrica.</p>
+
+        <p>En el mercado regulado, los precios son establecidos por la <strong>Comisión de Regulación de Energía y Gas (CREG)</strong>, entidad encargada de definir tarifas, vigilar la calidad del servicio y garantizar la competencia justa entre generadores, distribuidores y comercializadores.</p>
+
+        <p><strong>Tarifa eléctrica total:</strong></p>
+        <div class="equation">Tarifa = G + T + D + C + P</div>
+        <p class="explanation">G: Generación, T: Transmisión, D: Distribución, C: Comercialización y P: Pérdidas del sistema.</p>
+
+        <!-- Pérdidas -->
+        <h3>Pérdidas y Eficiencia Energética</h3>
+        <p>Las pérdidas técnicas se deben a la resistencia de los conductores y transformadores, mientras que las no técnicas provienen de errores de medición o conexiones ilegales. Minimizar estas pérdidas es esencial para aumentar la eficiencia y reducir costos al consumidor.</p>
+
+        <div class="equation">η = (P<sub>salida</sub> / P<sub>entrada</sub>) × 100%</div>
+        <p class="explanation">η: eficiencia del sistema, indica el porcentaje de potencia útil entregada respecto a la generada.</p>
+
+        <div class="graphics-container">
+            <div class="graphic-item">
+                <img src="https://via.placeholder.com/400x250" alt="Diagrama de pérdidas en el sistema eléctrico" class="graphic-img">
+                <p class="graphic-caption">Figura 3: Pérdidas técnicas y no técnicas en la red de distribución</p>
+            </div>
+        </div>
+
+        <!-- Conclusión -->
+        <h3>Conclusión del Estado del Arte</h3>
+        <p>El sistema eléctrico colombiano es un entramado complejo donde convergen principios físicos y regulación económica. Cada etapa —desde la generación hasta la comercialización— implica procesos sustentados en las leyes del electromagnetismo y la termodinámica. La regulación de la <strong>CREG</strong> y la creación de las <strong>Áreas de Distribución (ADD)</strong> aseguran que la energía generada llegue de forma segura, eficiente y equitativa a todos los rincones del país.</p>
     </div>
+</section>
+
     
     <footer>
         <div class="container">
             <p>Proyecto de Investigación: Distribución de la Energía en Colombia</p>
-            <p>Universidad Tecnologica de Pereira-2025</p>
+            <p>Universidad Tecnológica de Pereira - 2025-2</p>
             <p>Integrantes: Camila Escobar y Karoll López</p>
         </div>
     </footer>
